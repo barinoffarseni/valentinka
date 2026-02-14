@@ -91,29 +91,24 @@
   Спасибо тебе за тот день!`;
     let i = 0;
 
-    let interval
     function startInterval(delay) {
-        let interval = setInterval(type, delay);
+        if (interval) {
+            console.log('lol')
+            clearInterval(interval)
+        }
+        interval = setInterval(() => type(interval), delay);
     }
-    function type() {
+    function type(interval) {
         if (i < art.length) {
-            console.log(interval)
             if (interval) {
                 if (art.charAt(i) == '.') {
-                    clearInterval(interval);
-                    startInterval(type, 500)
-                    waitingText = 10000
+                    startInterval(500)
                 } else if (art.charAt(i) == ',') {
-                    clearInterval(interval);
-                    startInterval(type, 250)
-                    waitingText = 100
+                    startInterval(250)
                 } else if (art.charAt(i) == ' ') {
-                    clearInterval(interval);
-                    startInterval(type, 20)
+                    startInterval(20)
                 } else {
-                    clearInterval(interval);
-                    startInterval(type, 40)
-                    waitingText = 50
+                    startInterval(40)
                 }
             }
             document.getElementById('console').innerHTML += art.charAt(i);
@@ -122,7 +117,8 @@
             clearInterval(interval)
         }
     }
-    startInterval(40)
+    let interval = null
+    startInterval(1000)
   </script>
 </body>
 </html>
