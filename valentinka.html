@@ -15,6 +15,14 @@
       justify-content: center;
       min-height: 100vh;
       text-align: center;
+      animation: gradientMove 8s ease infinite;
+      background-size: 400% 400%;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     .card {
@@ -69,17 +77,10 @@
       Это простой красивый HTML‑файл, который можно открыть прямо на iPhone без установки приложений.
     </p> -->
     <pre id="console"></pre>
-
-    <button onclick="showMessage()">Нажми меня</button>
-
-    <div class="footer">Сделано с ❤️</div>
+    <div class="footer">----------------------------</div>
   </div>
 
   <script>
-    function showMessage() {
-      alert("Работает 🎉 Можно менять текст на любой!");
-    }
-
     const art = `
     Я до сих пор вспоминаю ту прогулку с тобой,
   И, может быть, именно потому ты так притягательна,
@@ -89,11 +90,11 @@
   Hо, надеюсь, вскоре я получу ту самую возможность
   привлечь твое внимание.
   Спасибо тебе за тот день!`;
+
     let i = 0;
 
     function startInterval(delay) {
         if (interval) {
-            console.log('lol')
             clearInterval(interval)
         }
         interval = setInterval(() => type(interval), delay);
