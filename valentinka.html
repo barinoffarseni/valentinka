@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Привет 👋</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #b5d4e2, #b33cc5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(156, 59, 141, 0.12);
+      backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 420px;
+      margin: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      background: white;
+      color: #5a67d8;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>С днем святого валентина тебя</h1>
+    <!-- <p>
+      Это простой красивый HTML‑файл, который можно открыть прямо на iPhone без установки приложений.
+    </p> -->
+    <pre id="console"></pre>
+
+    <button onclick="showMessage()">Нажми меня</button>
+
+    <div class="footer">Сделано с ❤️</div>
+  </div>
+
+  <script>
+    function showMessage() {
+      alert("Работает 🎉 Можно менять текст на любой!");
+    }
+
+    const art = `
+    Я до сих пор вспоминаю ту прогулку с тобой,
+  И, может быть, именно потому ты так притягательна,
+  Ведь самые тихие чудеса всегда живут чуть дальше,
+   Чем я привык доставать. 
+  Мб я, правда, еще слишком юн,
+  Hо, надеюсь, вскоре я получу ту самую возможность
+  привлечь твое внимание.
+  Спасибо тебе за тот день!`;
+    let i = 0;
+
+    let interval
+    function startInterval(delay) {
+        let interval = setInterval(type, delay);
+    }
+    function type() {
+        if (i < art.length) {
+            console.log(interval)
+            if (interval) {
+                if (art.charAt(i) == '.') {
+                    clearInterval(interval);
+                    startInterval(type, 500)
+                    waitingText = 10000
+                } else if (art.charAt(i) == ',') {
+                    clearInterval(interval);
+                    startInterval(type, 250)
+                    waitingText = 100
+                } else if (art.charAt(i) == ' ') {
+                    clearInterval(interval);
+                    startInterval(type, 20)
+                } else {
+                    clearInterval(interval);
+                    startInterval(type, 40)
+                    waitingText = 50
+                }
+            }
+            document.getElementById('console').innerHTML += art.charAt(i);
+            i++;
+        } else {
+            clearInterval(interval)
+        }
+    }
+    startInterval(40)
+  </script>
+</body>
+</html>
